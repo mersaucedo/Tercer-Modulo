@@ -110,10 +110,7 @@ function ordenPokemonMayor(argument = "daño") {
         seleccionaPokemon.base_damage + seleccionaPokemon.max_damage;
     }
 
-    let result =
-      argument === "type"
-        ? pokemons.sort((a, b) => a[argument].localeCompare(b[argument]))
-        : pokemons.sort((a, b) => b[argument] - a[argument]);
+    let result =pokemons.sort((a, b) => b[argument] - a[argument]);
     console.log(result);
   } else {
     console.log("Debes ingresar un argumento válido");
