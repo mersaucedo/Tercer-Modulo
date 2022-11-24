@@ -1,1 +1,1 @@
-Ejercicios de la primera sesión
+Ejercicios de la primera  y segunda sesión
