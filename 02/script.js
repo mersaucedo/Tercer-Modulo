@@ -79,19 +79,9 @@ let users = [
   { nombre: "Andres", apellido: "Pacheco", edad: 38, profesion: "developer" },
   { nombre: "Andrea", apellido: "Sanchez", edad: 25, profesion: "profesor" },
   { nombre: "Julia", apellido: "Ochoa", edad: 32, profesion: "musico" },
-  {
-    nombre: "Samuel",
-    apellido: "Martinez",
-    edad: 29,
-    profesion: "programador",
-  },
+  { nombre: "Samuel", apellido: "Martinez", edad: 29, profesion: "programador"},
   { nombre: "Roberto", apellido: "Mattos", edad: 40, profesion: "chef" },
-  {
-    nombre: "Mercedes",
-    apellido: "Sanchez",
-    edad: 35,
-    profesion: "veterinario",
-  },
+  { nombre: "Mercedes", apellido: "Sanchez", edad: 35, profesion: "veterinario"},
 ];
 
 //6. Crear una funcion que nos permita escribir los datos de cada usuario en el navegador linea por linea de la siguiente manera:
@@ -100,6 +90,17 @@ let users = [
 // 3. Formar la frase nombre apellido tiene edad años y es profesion
 // 4. Escribir esta fra
 // Ejemplo: "Andres Soto tiene 28 años y es profesor"
+
+// for(const index in users){
+//     let nombre = users[index].nombre
+//     let apellido = users[index].apellido
+//     let edad = users[index].edad
+//     let profesion = users[index].profesion
+
+//     let frase = `${nombre} ${apellido} tiene ${edad} años y es ${profesion}`
+//     document.write(frase)
+//     document.write("<br>")
+// }
 
 //7. Crear una funcion que nos permita ingresar el parametro por el cual se va a ordenar la lista de usuarios y retorne la lista
 // ordenada.
@@ -124,30 +125,24 @@ const root = document.getElementById("root");
 const button = document.createElement("button");
 button.textContent = "Aceptar";
 
-
-button.style.cursor = "pointer"
-button.style.background = "red"
-button.style.color = "white"
-button.style.border = "none"
-button.style.width ="70px"
-button.style.height="50px"
-button.style.borderRadius = "20%"
+button.style.cursor = "pointer";
+button.style.background = "red";
+button.style.color = "white";
+button.style.border = "none";
+button.style.width = "70px";
+button.style.height = "50px";
+button.style.borderRadius = "20%";
 
 button.addEventListener("click", (e) => {
-    alert("de acuerdo!")
-})
+  alert("de acuerdo!");
+});
 
 //9. Agrega un listener al boton para que cuando el usuario haga hover sobre este, el boton desaparezca.
 
-
 button.addEventListener("mousemove", () => {
-  button.style.visibility= "hidden";
-
-})
-button.addEventListener("mouseleave", () =>{
-  
+  button.style.visibility = "hidden";
+});
+button.addEventListener("mouseleave", () => {
   button.style.visibility = "visible";
-  
-})
+});
 root.append(button);
-
