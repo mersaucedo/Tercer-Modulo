@@ -131,6 +131,7 @@ button.style.color = "white"
 button.style.border = "none"
 button.style.width ="70px"
 button.style.height="50px"
+button.style.borderRadius = "20%"
 
 button.addEventListener("click", (e) => {
     alert("de acuerdo!")
