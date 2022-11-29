@@ -1,1 +1,1 @@
-Ejercicios de la sesión 05 con HTML, JS, CSS
+Ejercicios de la sesión 06 con HTML, JS, CSS
