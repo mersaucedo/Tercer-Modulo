@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body>
+    
+<div ng-app="myApp" ng-controller="myCtrl">
+    <h1>Multiplan</h1>
+    <h3>Factura de Alquiler </h3>
+    <p>Distancia: <input type="number" ng-model="distancia"></p>
+    <p>Km: {{distancia}}</p>
+    <p>Tarifa: {{calcularTarifa()}}</p>
+    <p>Descuento: {{calcularDescuento()}}</p>
+    <p>Total a Pagar: {{Pago()}}</p>
+    <script>
+        let app = angular.module("myApp", [])
+
+        app.controller("myCtrl",function($scope){
+            $scope.distancia = 0
+            $scope.calcularTarifa=function(){
+                if($scope.distancia<=0){
+                    return 0
+                }
+                else if($scope.distancia <=300){
+                    return 250
+                } else if($scope.distancia <=1000){
+                    return 250 + 30*($scope.distancia -300)
+                }else{
+                    return 250 + 30*(1000-300)+20*($scope.distancia -1000)
+                }
+
+            }
+
+            $scope.calcularDescuento=function(){
+                if($scope.calcularTarifa() >=500){
+                    return $scope.calcularTarifa()*0.10
+                } else {
+                    return 0
+                }
+            }
+            
+            $scope.Pago=function(){
+                
+                    return $scope.calcularTarifa() -$scope.calcularDescuento()
+
+            }
+
+
+
+
+        })
+    </script>
+
+
+
+</div>
+
+
+
+</body>
+</html>
