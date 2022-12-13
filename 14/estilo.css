@@ -8,6 +8,7 @@ h1{
     color: #0E1C36;
 }
 input{
+    text-align: center;
     background-color: antiquewhite;
     border: 0;
     font-size:18px;
