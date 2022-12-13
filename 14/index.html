@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,114 +10,106 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
     <style>
         input.ng-invalid {
-            background-color:pink;
+            background-color: pink;
         }
+
         input.ng-valid {
-            background-color:lightgreen;
+            background-color: lightgreen;
         }
     </style>
 </head>
+
 <body>
-    
 
-    <form ng-app="myApp" ng-controller="myCtrl" 
-name="myForm" novalidate>
-   
-    <h1>Salario de Trabajadores </h1>
-    <h3>Código: <input type="text" name="codigo" ng-model="codigo" required>
-        <span style="color:red" ng-show="myForm.codigo.$touched && myForm.codigo.$invalid">
-            <span ng-show="myForm.codigo.$error.required">Ingrese el código.</span>
-        </span>
-    </h3>
+    <form ng-app="myApp" ng-controller="myCtrl" name="myForm" novalidate>
 
-    <h3>Nombre: <input type="text" name="nombre" ng-model="nombre" required>
-        <span style="color:red" ng-show="myForm.nombre.$touched  && myForm.nombre.$invalid">
-            <span ng-show="myForm.nombre.$error.required">Ingrese el nombre.</span>
-        </span>
-    </h3>
+        <h1>Salario de Trabajadores </h1>
+        <h3>Código: <input type="text" name="codigo" ng-model="codigo" required>
+            <span style="color:red" ng-show="myForm.codigo.$touched && myForm.codigo.$invalid">
+                <span ng-show="myForm.codigo.$error.required">Ingrese el código.</span>
+            </span>
+        </h3>
 
-    <h3>Horas trabajadas: <input type="number" name="horas" ng-model="horas"required>
-        <span style="color:red" ng-show="myForm.horas.$touched  && myForm.horas.$invalid">
-            <span ng-show="myForm.horas.$error.required">Ingrese las horas.</span>
-        </span>
-    </h3>
+        <h3>Nombre: <input type="text" name="nombre" ng-model="nombre" required>
+            <span style="color:red" ng-show="myForm.nombre.$touched  && myForm.nombre.$invalid">
+                <span ng-show="myForm.nombre.$error.required">Ingrese el nombre.</span>
+            </span>
+        </h3>
 
-    <h3>Tarifa por hora trabajada: <input type="number" name="tarifa" ng-model="tarifa" required>
-        <span style="color:red" ng-show="myForm.tarifa.$touched  && myForm.tarifa.$invalid">
-            <span ng-show="myForm.tarifa.$error.required">Ingrese la tarifa por hora trabajada.</span>
-        </span>
+        <h3>Horas trabajadas: <input type="number" name="horas" ng-model="horas" required>
+            <span style="color:red" ng-show="myForm.horas.$touched  && myForm.horas.$invalid">
+                <span ng-show="myForm.horas.$error.required">Ingrese las horas.</span>
+            </span>
+        </h3>
 
-    </h3>  
+        <h3>Tarifa por hora trabajada: <input type="number" name="tarifa" ng-model="tarifa" required>
+            <span style="color:red" ng-show="myForm.tarifa.$touched  && myForm.tarifa.$invalid">
+                <span ng-show="myForm.tarifa.$error.required">Ingrese la tarifa por hora trabajada.</span>
+            </span>
 
-    <h3>Salario Básico {{calcularTarifa()}}</h3>
-    <h3>{{descuento}} % Descuento: {{calcularDescuento()}}</h3>
-    <h3>Salario neto de {{nombre}}: {{Pago()}}</h3>
+        </h3>
 
-    <h1>{{codigo.$valid}}</h1>
-    <script>
-        let app = angular.module("myApp", [])
+        <h3>Salario Básico {{calcularTarifa()}}</h3>
+        <h3>{{descuento}} % Descuento: {{calcularDescuento()}}</h3>
+        <h3>Salario neto de {{nombre}}: {{Pago()}}</h3>
 
-        app.controller("myCtrl",function($scope){
-            $scope.horas = 0
-            $scope.tarifa = 0
-            $scope.calcularTarifa=function(){
-                return  $scope.horas*$scope.tarifa
+        <script>
+            let app = angular.module("myApp", [])
 
-            }
+            app.controller("myCtrl", function ($scope) {
+                $scope.horas = 0
+                $scope.tarifa = 0
 
-            $scope.calcularDescuento=function(){
-                $scope.descuento = 0
-                if($scope.calcularTarifa() <=500){
-                    $scope.descuento =0
-                    return $scope.calcularTarifa()*0.00
-                    
-                } 
-                else if($scope.calcularTarifa() <=1000){
-                    $scope.descuento =2
-                    return $scope.calcularTarifa()*0.02
-
-                }else if($scope.calcularTarifa() <=4000){
-                    $scope.descuento =8
-                    return $scope.calcularTarifa()*0.08
+                $scope.calcularTarifa = function () {
+                    return $scope.horas * $scope.tarifa
 
                 }
-                else if($scope.calcularTarifa() <=8000){
-                    $scope.descuento =15
-                    return $scope.calcularTarifa()*0.15
+
+                $scope.calcularDescuento = function () {
+                    $scope.descuento = 0
+                    if ($scope.calcularTarifa() <= 500) {
+                        $scope.descuento = 0
+                        return $scope.calcularTarifa() * 0.00
+
+                    }
+                    else if ($scope.calcularTarifa() <= 1000) {
+                        $scope.descuento = 2
+                        return $scope.calcularTarifa() * 0.02
+
+                    } else if ($scope.calcularTarifa() <= 4000) {
+                        $scope.descuento = 8
+                        return $scope.calcularTarifa() * 0.08
+
+                    }
+                    else if ($scope.calcularTarifa() <= 8000) {
+                        $scope.descuento = 15
+                        return $scope.calcularTarifa() * 0.15
+
+                    }
+                    else if ($scope.calcularTarifa() <= 10000) {
+                        $scope.descuento = 21
+                        return $scope.calcularTarifa() * 0.21
+
+                    }
+                    else if ($scope.calcularTarifa() >= 10001) {
+                        $scope.descuento = 30
+                        return $scope.calcularTarifa() * 0.30
+
+                    }
+
+                    else {
+                        return 0
+                    }
+                }
+
+                $scope.Pago = function () {
+
+                    return $scope.calcularTarifa() - $scope.calcularDescuento()
 
                 }
-                else if($scope.calcularTarifa() <=10000){
-                    $scope.descuento =21
-                    return $scope.calcularTarifa()*0.21
-
-                }  
-                else if($scope.calcularTarifa() >=10001){
-                    $scope.descuento =30
-                    return $scope.calcularTarifa()*0.30
-
-                }                
-                
-                else {
-                    return 0
-                }
-            }
-            
-            $scope.Pago=function(){
-                
-                    return $scope.calcularTarifa() -$scope.calcularDescuento()
-
-            }
-
-
-
-
-        })
-    </script>
-
-
-
-</form>
-
-
+            })
+        </script>
+    </form>
 </body>
+
 </html>
