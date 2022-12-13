@@ -18,13 +18,36 @@
 </head>
 <body>
     
-<div ng-app="myApp" ng-controller="myCtrl">
+
+    <form ng-app="myApp" ng-controller="myCtrl" 
+name="myForm" novalidate>
    
     <h1>Salario de Trabajadores </h1>
-    <h3>Código: <input type="text" ng-model="codigo" required></h3>
-    <h3>Nombre: <input type="text" ng-model="nombre"required></h3>
-    <h3>Horas trabajadas: <input type="number" ng-model="horas"required></h3>
-    <h3>Tarifa por hora trabajada: <input type="number" ng-model="tarifa" required></h3>   
+    <h3>Código: <input type="text" name="codigo" ng-model="codigo" required>
+        <span style="color:red" ng-show="myForm.codigo.$touched && myForm.codigo.$invalid">
+            <span ng-show="myForm.codigo.$error.required">Ingrese el código.</span>
+        </span>
+    </h3>
+
+    <h3>Nombre: <input type="text" name="nombre" ng-model="nombre" required>
+        <span style="color:red" ng-show="myForm.nombre.$touched  && myForm.nombre.$invalid">
+            <span ng-show="myForm.nombre.$error.required">Ingrese el nombre.</span>
+        </span>
+    </h3>
+
+    <h3>Horas trabajadas: <input type="number" name="horas" ng-model="horas"required>
+        <span style="color:red" ng-show="myForm.horas.$touched  && myForm.horas.$invalid">
+            <span ng-show="myForm.horas.$error.required">Ingrese las horas.</span>
+        </span>
+    </h3>
+
+    <h3>Tarifa por hora trabajada: <input type="number" name="tarifa" ng-model="tarifa" required>
+        <span style="color:red" ng-show="myForm.tarifa.$touched  && myForm.tarifa.$invalid">
+            <span ng-show="myForm.tarifa.$error.required">Ingrese la tarifa por hora trabajada.</span>
+        </span>
+
+    </h3>  
+
     <h3>Salario Básico {{calcularTarifa()}}</h3>
     <h3>{{descuento}} % Descuento: {{calcularDescuento()}}</h3>
     <h3>Salario neto de {{nombre}}: {{Pago()}}</h3>
@@ -92,8 +115,7 @@
 
 
 
-</div>
-
+</form>
 
 
 </body>
