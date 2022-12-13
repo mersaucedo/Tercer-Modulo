@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        input.ng-invalid {
+            background-color:pink;
+        }
+        input.ng-valid {
+            background-color:lightgreen;
+        }
+    </style>
+</head>
+<body>
+    
+<div ng-app="myApp" ng-controller="myCtrl">
+   
+    <h1>Salario de Trabajadores </h1>
+    <h3>Código: <input type="text" ng-model="codigo" required></h3>
+    <h3>Nombre: <input type="text" ng-model="nombre"required></h3>
+    <h3>Horas trabajadas: <input type="number" ng-model="horas"required></h3>
+    <h3>Tarifa por hora trabajada: <input type="number" ng-model="tarifa" required></h3>   
+    <h3>Salario Básico {{calcularTarifa()}}</h3>
+    <h3>{{descuento}} % Descuento: {{calcularDescuento()}}</h3>
+    <h3>Salario neto de {{nombre}}: {{Pago()}}</h3>
+
+    <h1>{{codigo.$valid}}</h1>
+    <script>
+        let app = angular.module("myApp", [])
+
+        app.controller("myCtrl",function($scope){
+            $scope.horas = 0
+            $scope.tarifa = 0
+            $scope.calcularTarifa=function(){
+                return  $scope.horas*$scope.tarifa
+
+            }
+
+            $scope.calcularDescuento=function(){
+                $scope.descuento = 0
+                if($scope.calcularTarifa() <=500){
+                    $scope.descuento =0
+                    return $scope.calcularTarifa()*0.00
+                    
+                } 
+                else if($scope.calcularTarifa() <=1000){
+                    $scope.descuento =2
+                    return $scope.calcularTarifa()*0.02
+
+                }else if($scope.calcularTarifa() <=4000){
+                    $scope.descuento =8
+                    return $scope.calcularTarifa()*0.08
+
+                }
+                else if($scope.calcularTarifa() <=8000){
+                    $scope.descuento =15
+                    return $scope.calcularTarifa()*0.15
+
+                }
+                else if($scope.calcularTarifa() <=10000){
+                    $scope.descuento =21
+                    return $scope.calcularTarifa()*0.21
+
+                }  
+                else if($scope.calcularTarifa() >=10001){
+                    $scope.descuento =30
+                    return $scope.calcularTarifa()*0.30
+
+                }                
+                
+                else {
+                    return 0
+                }
+            }
+            
+            $scope.Pago=function(){
+                
+                    return $scope.calcularTarifa() -$scope.calcularDescuento()
+
+            }
+
+
+
+
+        })
+    </script>
+
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+body{
+display:flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+h1{
+    color: #0E1C36;
+}
+input{
+    background-color: antiquewhite;
+    border: 0;
+    font-size:18px;
+    border-radius: 10px;
+
+    
+
+}
